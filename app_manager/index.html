@@ -43,7 +43,7 @@ function updateStatusCallback(response) {
       document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
 
-    reloadCompetitions();
+    reloadCompetitions($('#competitions'));
   }
 
 $(document).ready(function() {
@@ -63,6 +63,7 @@ function myFacebookLogin() {
   FB.login(updateStatusCallback, {scope: 'publish_actions'});
 }
 
+
 </script>
 
 <H1>Welcome to Fredagsmys Application Manager</H1>
@@ -71,7 +72,16 @@ function myFacebookLogin() {
 </div>
 <div id="status">Checking login status...</div>
 <h3>Competitions</h3>
-<table id="competitions"></table>
-<button id="createCompetitionButton" onclick="createCompetition()">Create new Competition</button>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+    </tr>
+    </thead>
+    <tbody id="competitions">
+
+    </tbody>
+</table>
+<button id="createCompetitionButton" onclick="createCompetition($('#competitions'))">Create new Competition</button>
 </body>
 </html>

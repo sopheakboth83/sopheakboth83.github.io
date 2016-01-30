@@ -1,21 +1,21 @@
-function reloadCompetitions() {
+function reloadCompetitions(tbody) {
 FB.api(
   'me/objects/fredagsmys_wadpam:competition',
   'get',
   function(response) {
     // handle the response
     console.log(response);
-    $('#competitions').innerHTML = '';
+    tbody.innerHTML = '';
     response.data.forEach(function(item, index) {
         console.log(item);
-        $('#competitions').append('<tr><td>' + item.title + '</td></tr>');
+        tbody.append('<tr><td>' + item.title + '</td></tr>');
     });
 
   }
 );
 }
 
-function createCompetition() {
+function createCompetition(tbody) {
     FB.api(
       'me/objects/fredagsmys_wadpam:competition',
       'post',
@@ -31,7 +31,7 @@ function createCompetition() {
       }},
 
      function(response) {
-        reloadCompetitions();
+        reloadCompetitions(tbody);
       }
     );
 }
