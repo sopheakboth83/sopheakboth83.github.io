@@ -4,7 +4,8 @@ FB.api(
   'get',
   function(response) {
     // handle the response
-    console.log('app_token: ' + response);
+    console.log('app_token:');
+    console.log(response);
   }
 );
 
