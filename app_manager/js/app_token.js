@@ -14,7 +14,7 @@ $.getJSON('https://graph.facebook.com/v2.5/oauth/access_token', {
     client_secret: clientSecret,
     grant_type:'client_credentials'
 })
-.done(function(data) {
-    console.log(data);
+.done(function(json) {
+    console.log(json.access_token);
 });
 }
