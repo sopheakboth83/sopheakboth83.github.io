@@ -10,26 +10,26 @@
 
 // This is called with the results from from FB.getLoginStatus().
 function updateStatusCallback(response) {
-//console.log('updateStatusCallback');
-//console.log(response);
-// The response object is returned with a status field that lets the
-// app know the current login status of the person.
-// Full docs on the response object can be found in the documentation
-// for FB.getLoginStatus().
-if (response.status === 'connected') {
-  // Logged into your app and Facebook.
+    //console.log('updateStatusCallback');
+    //console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+        // Logged into your app and Facebook.
         $('#loginbutton').attr('display', 'none');
-  testAPI();
-} else if (response.status === 'not_authorized') {
-  // The person is logged into Facebook, but not your app.
+        testAPI();
+    } else if (response.status === 'not_authorized') {
+        // The person is logged into Facebook, but not your app.
         $('#loginbutton,#feedbutton').attr('display', 'block');
-      document.getElementById('status').innerHTML = '';
-} else {
-  // The person is not logged into Facebook, so we're not sure if
-  // they are logged into this app or not.
+        document.getElementById('status').innerHTML = '';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
         $('#loginbutton,#feedbutton').attr('display', 'block');
-      document.getElementById('status').innerHTML = '';
-}
+        document.getElementById('status').innerHTML = '';
+    }
 }
 
   // Here we run a very simple test of the Graph API after login is
@@ -44,17 +44,15 @@ if (response.status === 'connected') {
 
 
 $(document).ready(function() {
-    $(document).ready(function() {
-      $.ajaxSetup({ cache: true });
-      $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
-        FB.init({
-          appId: '1520767301587499',
-          status: true,
-          version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
-        });
-        FB.getLoginStatus(updateStatusCallback);
-      });
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+    FB.init({
+      appId: '1520767301587499',
+      status: true,
+      version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
     });
+    FB.getLoginStatus(updateStatusCallback);
+  });
 });
 
 // Only works after `FB.init` is called
