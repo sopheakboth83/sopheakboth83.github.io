@@ -22,7 +22,8 @@ $(document).ready(function() {
 });
 
     </script>
+    app_token: <span id="app_token">not obtained.</span>
     App Secret: <input type="text" placeholder="secret" id="app_secret" value="" size="50"/><br/>
-    <button onclick="getAppToken('1520767301587499',$('#app_secret').val())">GET app token</button>
+    <button onclick="getAppToken('1520767301587499',$('#app_secret').val(), $('#app_token'))">GET app token</button>
 </body>
 </html>
