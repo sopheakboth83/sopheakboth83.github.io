@@ -11,7 +11,8 @@ function getAppToken(clientId, clientSecret) {
 
 $.getJSON('https://graph.facebook.com/v2.5/oauth/access_token', {
     client_id: clientId,
-    client_secret: clientSecret
+    client_secret: clientSecret,
+    grant_type:'client_credentials'
 })
 .done(function(data) {
     console.log(data);
