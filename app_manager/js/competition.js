@@ -6,8 +6,9 @@ FB.api(
     // handle the response
     console.log(response);
     $('#competitions').innerHTML = '';
-    response.data.forEach(function(index, item) {
+    response.data.forEach(function(item, index) {
         console.log(item);
+        $('#competitions').append('<tr><td>' + item.title + '</td></tr>');
     });
 
   }
