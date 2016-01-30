@@ -18,7 +18,7 @@ function updateStatusCallback(response) {
 // for FB.getLoginStatus().
 if (response.status === 'connected') {
   // Logged into your app and Facebook.
-        $('#loginbutton,#feedbutton').attr('display', 'none');
+        $('#loginbutton').attr('display', 'none');
   testAPI();
 } else if (response.status === 'not_authorized') {
   // The person is logged into Facebook, but not your app.
@@ -65,9 +65,9 @@ function myFacebookLogin() {
 </script>
 
 <H1>Welcome to Fredagsmys!</H1>
-<span id="loginbutton" display="none">
+<div id="loginbutton" display="none">
     <button id="loginbuttonbutton" onclick="myFacebookLogin()">Login with Facebook</button>
-</span>
-<span id="status">Checking login status...</span>
+</div>
+<div id="status">Checking login status...</div>
 </body>
 </html>
