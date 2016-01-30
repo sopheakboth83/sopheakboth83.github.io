@@ -42,6 +42,10 @@ function updateStatusCallback(response) {
       document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
 
+    reloadCompetitions();
+  }
+
+  function reloadCompetitions() {
     FB.api(
       'me/objects/fredagsmys_wadpam:competition',
       'get',
@@ -51,7 +55,6 @@ function updateStatusCallback(response) {
       }
     );
   }
-
 
 $(document).ready(function() {
   $.ajaxSetup({ cache: true });
@@ -70,6 +73,26 @@ function myFacebookLogin() {
   FB.login(updateStatusCallback, {scope: 'publish_actions'});
 }
 
+function createCompetition() {
+    FB.api(
+      'me/objects/fredagsmys_wadpam:competition',
+      'post',
+      {'object': {
+        'og:url': 'http://samples.ogp.me/1520768124920750',
+        'og:title': 'Sample Competition',
+        'og:type': 'fredagsmys_wadpam:competition',
+        'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
+        'og:description': '',
+        'fb:app_id': '1520767301587499',
+        'place:location:latitude': '55.2030',
+        'place:location:longitude': '15.6070'
+      }},
+
+     function(response) {
+        reloadCompetitions();
+      }
+    );
+}
 </script>
 
 <H1>Welcome to Fredagsmys Application Manager</H1>
@@ -77,5 +100,8 @@ function myFacebookLogin() {
     <button id="loginbuttonbutton" onclick="myFacebookLogin()">Login with Facebook</button>
 </div>
 <div id="status">Checking login status...</div>
+<h3>Competitions</h3>
+<table></table>
+<button id="createCompetitionButton" onclick="createCompetition()">Create new Competition</button>
 </body>
 </html>
