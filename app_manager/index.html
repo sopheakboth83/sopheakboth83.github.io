@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="js/competition.js"></script>
     <meta charset="UTF-8">
     <title>Welcome to Fredagsmys Application Manager</title>
 </head>
@@ -45,17 +46,6 @@ function updateStatusCallback(response) {
     reloadCompetitions();
   }
 
-  function reloadCompetitions() {
-    FB.api(
-      'me/objects/fredagsmys_wadpam:competition',
-      'get',
-      function(response) {
-        // handle the response
-        console.log(response);
-      }
-    );
-  }
-
 $(document).ready(function() {
   $.ajaxSetup({ cache: true });
   $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
@@ -73,26 +63,6 @@ function myFacebookLogin() {
   FB.login(updateStatusCallback, {scope: 'publish_actions'});
 }
 
-function createCompetition() {
-    FB.api(
-      'me/objects/fredagsmys_wadpam:competition',
-      'post',
-      {'object': {
-        'og:url': 'http://samples.ogp.me/1520768124920750',
-        'og:title': 'Sample Competition',
-        'og:type': 'fredagsmys_wadpam:competition',
-        'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
-        'og:description': '',
-        'fb:app_id': '1520767301587499',
-        'place:location:latitude': '55.2030',
-        'place:location:longitude': '15.6070'
-      }},
-
-     function(response) {
-        reloadCompetitions();
-      }
-    );
-}
 </script>
 
 <H1>Welcome to Fredagsmys Application Manager</H1>
@@ -101,7 +71,7 @@ function createCompetition() {
 </div>
 <div id="status">Checking login status...</div>
 <h3>Competitions</h3>
-<table></table>
+<table id="competitions"></table>
 <button id="createCompetitionButton" onclick="createCompetition()">Create new Competition</button>
 </body>
 </html>
