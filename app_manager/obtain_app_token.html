@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="js/app_token.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Obtain app token</title>
+
+</head>
+<body>
+    <script>
+$(document).ready(function() {
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+    FB.init({
+      appId: '1520767301587499',
+      status: true,
+      version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+    });
+  });
+});
+
+    </script>
+    App Secret: <input type="hidden" placeholder="secret" id="app_secret" />
+    <button onclick="getAppToken($('1520767301587499','#app_secret').value())">GET app token</button>
+</body>
+</html>
