@@ -22,10 +22,11 @@ $(document).ready(function() {
 </script>
 
 App Secret: <input type="text" placeholder="secret" id="app_secret" value="" size="50"/>
-<button onclick="obtainAppToken('1520767301587499',$('#app_secret').val()); reloadCompetitions($('#competitions'))">GET app token</button>
+<button onclick="obtainAppToken('1520767301587499',$('#app_secret').val())">GET app token</button>
 app_token: <span id="app_token">not obtained.</span>
 <H1>Welcome to Fredagsmys Application Manager</H1>
 <h3>Competitions</h3>
+<button onclick="reloadCompetitions($('#competitions'))">Reload</button>
 <table>
     <thead>
     <tr>
