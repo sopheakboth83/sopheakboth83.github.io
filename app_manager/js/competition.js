@@ -1,7 +1,10 @@
 function reloadCompetitions(tbody) {
 FB.api(
-  'me/objects/fredagsmys_wadpam:competition',
+  'app/objects/fredagsmys_wadpam:competition',
   'get',
+  {
+    access_token: getAppToken()
+  },
   function(response) {
     // handle the response
     console.log(response);

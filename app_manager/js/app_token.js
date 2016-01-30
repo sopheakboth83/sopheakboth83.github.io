@@ -1,4 +1,4 @@
-function getAppToken(clientId, clientSecret, targetTag) {
+function obtainAppToken(clientId, clientSecret) {
 //FB.api(
 //  '/oauth/access_token?client_id=' + clientId + '&client_secret=' + clientSecret + '&grant_type=client_credentials',
 //  'get',
@@ -15,8 +15,10 @@ $.getJSON('https://graph.facebook.com/v2.5/oauth/access_token', {
     grant_type:'client_credentials'
 })
 .done(function(json) {
-    console.log(json.access_token);
-//    targetTag.attr('app_token', json.access_token);
-    targetTag.text(json.access_token);
+    $('#app_token').text(json.access_token);
 });
+}
+
+function getAppToken() {
+    return $('#app_token').text();
 }
