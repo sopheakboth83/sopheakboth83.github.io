@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="js/competition.js"></script>
+    <meta charset="UTF-8">
+    <title>Competition: Fredagsmys</title>
+</head>
+<body>
+<script>
+
+$(document).ready(function() {
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+    FB.init({
+      appId: '1520767301587499',
+      status: true,
+      version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+    });
+  });
+  var compId = getParameterByName('comp_id');
+  if (compId) {
+    loadCompetition(compId);
+  }
+});
+</script>
+
+<H1>Competition</H1>
+<table>
+    <tbody id="comp">
+        <tr>
+            <td>id</td>
+            <td><input id="comp_id" readonly="readonly" type="number"/></td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td><input id="comp_title" type="text"/></td>
+        </tr>
+    </tbody>
+</table>
+<button id="saveCompetitionButton" onclick="saveCompetition($('#comp_id').val())">Save</button>
+</body>
+</html>

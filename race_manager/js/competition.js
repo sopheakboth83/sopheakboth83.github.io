@@ -8,20 +8,37 @@ FB.api(
     tbody.innerHTML = '';
     response.data.forEach(function(item, index) {
         console.log(item);
-        tbody.append('<tr><td>' + item.title + '</td><td>' + item.id + '</td></tr>');
+        tbody.append('<tr><td>' + item.title +
+            '</td><td><a href="competition.html#comp_id=' + item.id + '">' +
+            item.id + '</a></td></tr>');
     });
 
   }
 );
 }
 
-function createCompetition(tbody) {
+function loadCompetition(id) {
+FB.api(
+  '/' + id,
+  'get',
+  {
+    access_token: getAppToken()
+  },
+  function(response) {
+    console.log(response.title);
+    $('#comp_id').html(response.id);
+    $('#comp_title').val(response.title);
+  }
+);
+}
+
+function saveCompetition(id) {
     FB.api(
-      'me/objects/fredagsmys_wadpam:competition',
+      0 == id.length ? 'me/objects/fredagsmys_wadpam:competition' : id,
       'post',
       {'object': {
         'og:url': 'http://samples.ogp.me/1520768124920750',
-        'og:title': 'Sample Competition',
+        'og:title': $('#comp_title'),
         'og:type': 'fredagsmys_wadpam:competition',
         'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
         'og:description': '',
@@ -31,7 +48,8 @@ function createCompetition(tbody) {
       }},
 
      function(response) {
-        reloadCompetitions(tbody);
+        console.log(response);
+        $('#comp_id').val(response.id);
       }
     );
 }
