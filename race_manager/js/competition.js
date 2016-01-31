@@ -46,7 +46,7 @@ function saveCompetition(id) {
 
      function(response) {
         console.log(response);
-        $('#comp_id').val(response.id);
+        $('#comp_id').html(response.id);
       }
     );
 }
