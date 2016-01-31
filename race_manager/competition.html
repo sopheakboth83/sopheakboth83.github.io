@@ -18,12 +18,12 @@ $(document).ready(function() {
       status: true,
       version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
     });
-    FB.getLoginStatus();
-
-    var compId = getParameterByName('comp_id');
-    if (compId) {
-    loadCompetition(compId);
-    }
+    FB.getLoginStatus(function(response) {
+        var compId = getParameterByName('comp_id');
+        if (compId) {
+            loadCompetition(compId);
+        }
+    });
   });
 });
 </script>
