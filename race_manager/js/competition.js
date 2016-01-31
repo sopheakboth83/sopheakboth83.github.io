@@ -7,9 +7,10 @@ FB.api(
     console.log(response);
     $("#competitions").html('');
     response.data.forEach(function(item, index) {
-        $("#competitions").append('<tr><td><a href="competition.html#comp_id=' + item.id + '">' +
+        $("#competitions").append('<tr><td><a onclick="$(\'#main_div\').load(\'competition.html?comp_id=' + item.id +
+        '\', loadCompetition(\'' + item.id + '\'))">' +
             item.title + '</a></td></tr>');
-    });
+    })
 
   }
 );

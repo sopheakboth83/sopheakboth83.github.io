@@ -27,10 +27,12 @@ $('#main_div').load('home.html', {}, reloadCompetitions);
 }
 
 function displayUser() {
-FB.api('/me', function(response) {
-  $('#login').html(response.name);
-  $('#login').attr('onclick','');
-});
-$('#main_div').load('home.html', {}, reloadCompetitions);
+    $('#navbar-login').removeClass('active');
+    $('#navbar-home').addClass('active');
+    FB.api('/me', function(response) {
+      $('#login').html(response.name);
+      $('#login').attr('onclick','');
+    });
+    $('#main_div').load('home.html', {}, reloadCompetitions);
 }
 
