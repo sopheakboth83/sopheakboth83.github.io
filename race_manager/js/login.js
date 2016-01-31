@@ -19,20 +19,22 @@ function updateStatusCallback(response) {
 }
 
 function displayLogin() {
-FB.api('/me', function(response) {
-  $('#navbar-login').addClass('active');
+  $('#navbar_login').addClass('active');
   $('#login').attr('onclick','');
-});
-$('#main_div').load('home.html', {}, reloadCompetitions);
+  $('#main_div').load('login.html');
 }
 
 function displayUser() {
-    $('#navbar-login').removeClass('active');
-    $('#navbar-home').addClass('active');
+    $('#navbar_login').removeClass('active');
+    $('#navbar_home').addClass('active');
+    $('#navbar_sub2').removeClass('active');
     FB.api('/me', function(response) {
       $('#login').html(response.name);
-      $('#login').attr('onclick','');
+      $('#login').attr('onclick','FB.logout()');
+      loadHome();
     });
-    $('#main_div').load('home.html', {}, reloadCompetitions);
 }
 
+function loadHome() {
+    $('#main_div').load('home.html', {}, reloadCompetitions);
+}
