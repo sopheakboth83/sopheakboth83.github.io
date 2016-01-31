@@ -43,7 +43,7 @@ function updateStatusCallback(response) {
       document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
 
-    reloadMyCompetitions($('#competitions'));
+    reloadCompetitions($('#competitions'));
   }
 
 $(document).ready(function() {
