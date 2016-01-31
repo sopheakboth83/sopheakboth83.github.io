@@ -26,18 +26,23 @@ App Secret: <input type="text" placeholder="secret" id="app_secret" value="" siz
 app_token: <span id="app_token">not obtained.</span>
 <H1>Welcome to Fredagsmys Application Manager</H1>
 <h3>Competitions</h3>
-<button onclick="reloadCompetitions($('#competitions'))">Reload</button>
+
+<input type="number" onchange="loadCompetition($('#competition_id'))" size="20" placeholder="object id" value="" />
+<button onclick="loadCompetition($('#competition_id'))">Reload</button>
+
 <table>
     <thead>
     <tr>
-        <th>Title</th>
         <th>id</th>
+        <th id="comp_id"></th>
     </tr>
     </thead>
-    <tbody id="competitions">
-
+    <tbody id="comp_body">
+        <tr>
+            <td>title</td>
+            <td id="comp_title"></td>
+        </tr>
     </tbody>
 </table>
-<button id="createCompetitionButton" onclick="createCompetition($('#competitions'))">Create new Competition</button>
 </body>
 </html>
