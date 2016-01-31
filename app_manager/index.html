@@ -27,8 +27,8 @@ app_token: <span id="app_token">not obtained.</span>
 <H1>Welcome to Fredagsmys Application Manager</H1>
 <h3>Competitions</h3>
 
-<input id="competition_id" type="number" onchange="loadCompetition(this.val())" size="20" placeholder="object id" value="" />
-<button onclick="loadCompetition($('#competition_id').val())">Reload</button>
+<input id="competition_id" type="number" size="20" placeholder="object id" value="" />
+<button onclick="loadCompetition($('#competition_id').val())">Load</button>
 
 <table>
     <thead>
@@ -40,7 +40,7 @@ app_token: <span id="app_token">not obtained.</span>
     <tbody id="comp_body">
         <tr>
             <td>title</td>
-            <td id="comp_title"></td>
+            <td><input id="comp_title" type="text" placeholder="title" value="" /></td>
         </tr>
     </tbody>
 </table>

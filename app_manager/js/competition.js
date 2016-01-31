@@ -6,8 +6,8 @@ FB.api(
     access_token: getAppToken()
   },
   function(response) {
-    console.log(response);
-    $('#comp_id').val(response.id);
+    console.log(response.title);
+    $('#comp_id').html(response.id);
     $('#comp_title').val(response.title);
   }
 );
