@@ -35,7 +35,7 @@ function saveCompetition(id) {
       'post',
       {'object': {
         'og:url': 'http://samples.ogp.me/1520768124920750',
-        'og:title': $('#comp_title'),
+        'og:title': $('#comp_title').val(),
         'og:type': 'fredagsmys_wadpam:competition',
         'og:image': 'https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png',
         'og:description': '',
