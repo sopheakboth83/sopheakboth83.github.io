@@ -1,50 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="js/competition.js"></script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="js/competition.js"></script>
+    <script src="js/login.js"></script>
     <title>Welcome to Fredagsmys Competition Manager</title>
 </head>
 <body>
 <script>
-
-// This is called with the results from from FB.getLoginStatus().
-function updateStatusCallback(response) {
-    //console.log('updateStatusCallback');
-    //console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-        // Logged into your app and Facebook.
-        console.log('hiding loginbutton');
-        $('#loginbutton').attr('display', 'none');
-        testAPI();
-    } else if (response.status === 'not_authorized') {
-        // The person is logged into Facebook, but not your app.
-        $('#loginbutton,#feedbutton').attr('display', 'block');
-        document.getElementById('status').innerHTML = '';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-        $('#loginbutton,#feedbutton').attr('display', 'block');
-        document.getElementById('status').innerHTML = '';
-    }
-}
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    //console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      //console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
-    });
-
-    reloadCompetitions($('#competitions'));
-  }
 
 $(document).ready(function() {
   $.ajaxSetup({ cache: true });
@@ -58,31 +27,29 @@ $(document).ready(function() {
   });
 });
 
-// Only works after `FB.init` is called
-function myFacebookLogin() {
-  FB.login(updateStatusCallback, {scope: 'publish_actions'});
-}
-
 
 </script>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Competition Manager</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li id="navbar-login" class="align-right"><a id="login" onclick="myFacebookLogin()" href="#">Login with
+                    Facebook</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<H1>Welcome to Fredagsmys Competition Manager</H1>
-<div id="loginbutton" display="none">
-    <button id="loginbuttonbutton" onclick="myFacebookLogin()">Login with Facebook</button>
+<div class="container theme-showcase" role="main">
+    <div id="main_div" class="row">
+
+    </div>
+
 </div>
-<div id="status">Checking login status...</div>
-<h3>My Competitions</h3>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>id</th>
-    </tr>
-    </thead>
-    <tbody id="competitions">
 
-    </tbody>
-</table>
-<a href="competition.html#">Create new Competition</a>
 </body>
 </html>

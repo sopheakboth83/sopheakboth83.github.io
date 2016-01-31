@@ -1,16 +1,14 @@
-function reloadCompetitions(tbody) {
+function reloadCompetitions() {
 FB.api(
   'me/objects/fredagsmys_wadpam:competition',
   'get',
   function(response) {
     // handle the response
     console.log(response);
-    tbody.innerHTML = '';
+    $("#competitions").html('');
     response.data.forEach(function(item, index) {
-        console.log(item);
-        tbody.append('<tr><td>' + item.title +
-            '</td><td><a href="competition.html#comp_id=' + item.id + '">' +
-            item.id + '</a></td></tr>');
+        $("#competitions").append('<tr><td><a href="competition.html#comp_id=' + item.id + '">' +
+            item.title + '</a></td></tr>');
     });
 
   }
