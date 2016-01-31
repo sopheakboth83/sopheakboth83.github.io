@@ -33,7 +33,7 @@ $(document).ready(function() {
     <tbody id="comp">
         <tr>
             <td>id</td>
-            <td><input id="comp_id" readonly="readonly" type="number"/></td>
+            <td id="comp_id"></td>
         </tr>
         <tr>
             <td>title</td>
@@ -41,6 +41,6 @@ $(document).ready(function() {
         </tr>
     </tbody>
 </table>
-<button id="saveCompetitionButton" onclick="saveCompetition($('#comp_id').val())">Save</button>
+<button id="saveCompetitionButton" onclick="saveCompetition($('#comp_id').html())">Save</button>
 </body>
 </html>
