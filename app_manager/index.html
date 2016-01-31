@@ -27,7 +27,7 @@ app_token: <span id="app_token">not obtained.</span>
 <H1>Welcome to Fredagsmys Application Manager</H1>
 <h3>Competitions</h3>
 
-<input type="number" onchange="loadCompetition($('#competition_id').val())" size="20" placeholder="object id" value="" />
+<input id="competition_id" type="number" onchange="loadCompetition(this.val())" size="20" placeholder="object id" value="" />
 <button onclick="loadCompetition($('#competition_id').val())">Reload</button>
 
 <table>
