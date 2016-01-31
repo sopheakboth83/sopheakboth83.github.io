@@ -4,7 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="js/competition.js"></script>
     <meta charset="UTF-8">
-    <title>Welcome to Fredagsmys Application Manager</title>
+    <title>Welcome to Fredagsmys Competition Manager</title>
 </head>
 <body>
 <script>
@@ -43,7 +43,7 @@ function updateStatusCallback(response) {
       document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
 
-    reloadCompetitions($('#competitions'));
+    reloadMyCompetitions($('#competitions'));
   }
 
 $(document).ready(function() {
@@ -66,16 +66,17 @@ function myFacebookLogin() {
 
 </script>
 
-<H1>Welcome to Fredagsmys Application Manager</H1>
+<H1>Welcome to Fredagsmys Competition Manager</H1>
 <div id="loginbutton" display="none">
     <button id="loginbuttonbutton" onclick="myFacebookLogin()">Login with Facebook</button>
 </div>
 <div id="status">Checking login status...</div>
-<h3>Competitions</h3>
+<h3>My Competitions</h3>
 <table>
     <thead>
     <tr>
         <th>Title</th>
+        <th>id</th>
     </tr>
     </thead>
     <tbody id="competitions">

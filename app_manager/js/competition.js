@@ -11,7 +11,24 @@ FB.api(
     tbody.innerHTML = '';
     response.data.forEach(function(item, index) {
         console.log(item);
-        tbody.append('<tr><td>' + item.title + '</td></tr>');
+        tbody.append('<tr><td>' + item.title + '</td><td>' + item.id + '</td></tr>');
+    });
+
+  }
+);
+}
+
+function reloadMyCompetitions(tbody) {
+FB.api(
+  'me/objects/fredagsmys_wadpam:competition',
+  'get',
+  function(response) {
+    // handle the response
+    console.log(response);
+    tbody.innerHTML = '';
+    response.data.forEach(function(item, index) {
+        console.log(item);
+        tbody.append('<tr><td>' + item.title + '</td><td>' + item.id + '</td></tr>');
     });
 
   }
@@ -34,7 +51,7 @@ function createCompetition(tbody) {
       }},
 
      function(response) {
-        reloadCompetitions(tbody);
+        reloadMyCompetitions(tbody);
       }
     );
 }
