@@ -1,16 +1,20 @@
-        <div class="col-sm-4">
+        <div class="col-sm-6">
 
             <div class="panel panel-default">
 
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Sign-in options</div>
                 <table class="table">
-                    <tbody id="competitions">
+                    <tbody id="signinProviders">
+                    <tr>
+                        <td><button class="btn btn-lg btn-primary" type="button" onclick="myFacebookLogin()">
+                            Login with Facebook
+                        </button></td>
+                    </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-sm btn-primary" onclick="myFacebookLogin()">Login with Facebook
-                            </button>
+                            By signing in to this app, you approve its sharing the activity to your news feed.
                         </td>
                     </tr>
                     </tfoot>
