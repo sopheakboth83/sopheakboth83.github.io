@@ -13,7 +13,7 @@ function reloadEvents(competitionId) {
 }
 
 function loadEvent(competitionId, id) {
-    $('#main_div').load('event.html', {}, function() {
+    $('#main_div').load('event.html', function() {
         $('#comp_id').html(competitionId);
         loadEventInfo(competitionId, id);
     });

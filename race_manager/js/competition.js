@@ -19,20 +19,22 @@ function reloadCompetitions() {
 }
 
 function loadCompetition(id) {
-    $('#main_div').load('competition.html', {}, function() {
-        reloadEvents(id);
-        $.getJSON(getGujaUrl() + 'api/competitions/' + id)
-        .done(function(response) {
-            console.log(response.title);
-            $('#comp_id').html(response.id);
-            $('#comp_title').val(response.title);
-        });
+    $('#main_div').load('competition.html', function() {
+        if ('' != id) {
+            reloadEvents(id);
+            $.getJSON(getGujaUrl() + 'api/competitions/' + id)
+            .done(function(response) {
+                console.log(response.title);
+                $('#comp_id').html(response.id);
+                $('#comp_title').val(response.title);
+            });
+        }
     });
 
 }
 
 function saveCompetition(id) {
-    var createUrl = getGujaUrl() + 'api/competitions' + (0 == id.length ? '' : '/' + id);
+    var createUrl = getGujaUrl() + 'api/competitions' + ('' != id ? '' : '/' + id);
     var body = '{"title":"' + $('#comp_title').val() + '"}';
     $.ajax(createUrl,{
         method: 'POST',
