@@ -21,6 +21,7 @@ function reloadCompetitions() {
 function loadCompetition(id) {
     $('#main_div').load('competition.html', function() {
         if ('' != id) {
+            $('#createEventButton').removeAttr('disabled');
             reloadEvents(id);
             $.getJSON(getGujaUrl() + 'api/competitions/' + id)
             .done(function(response) {
@@ -28,6 +29,9 @@ function loadCompetition(id) {
                 $('#comp_id').html(response.id);
                 $('#comp_title').val(response.title);
             });
+        }
+        else {
+            $('#createEventButton').attr('disabled', 'disabled');
         }
     });
 
