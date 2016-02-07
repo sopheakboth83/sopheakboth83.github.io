@@ -60,5 +60,5 @@ function displayUser() {
 }
 
 function loadHome() {
-    $('#main_div').load('home.html', {}, reloadCompetitions);
+    $('#main_div').load('home.html', reloadCompetitions);
 }
