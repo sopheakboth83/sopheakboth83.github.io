@@ -12,19 +12,23 @@ function reloadCompetitions() {
     .done(function(data) {
         console.log(data);
         data.items.forEach(function(item, index) {
-            $("#competitions").append('<tr><td><a href="competition.html#comp_id=' + item.id + '">' +
-                item.title + '</a></td></tr>');
+            $("#competitions").append('<tr><td onclick="loadCompetition(' + item.id + ')">' +
+                item.title + '</td></tr>');
         });
     });
 }
 
 function loadCompetition(id) {
-    $.getJSON(getGujaUrl() + 'api/competitions/' + id)
-    .done(function(response) {
-        console.log(response.title);
-        $('#comp_id').html(response.id);
-        $('#comp_title').val(response.title);
+    $('#main_div').load('competition.html', {}, function() {
+        reloadEvents(id);
+        $.getJSON(getGujaUrl() + 'api/competitions/' + id)
+        .done(function(response) {
+            console.log(response.title);
+            $('#comp_id').html(response.id);
+            $('#comp_title').val(response.title);
+        });
     });
+
 }
 
 function saveCompetition(id) {
@@ -39,6 +43,6 @@ function saveCompetition(id) {
     })
     .done(function(data) {
         console.log(data);
-        $('#comp_id').html(data.id);
+        $('#comp_id').html(data);
     });
 }

@@ -15,6 +15,7 @@ function myFacebookLogin() {
 
 // This is called with the results from from FB.getLoginStatus().
 function updateStatusCallback(response) {
+    console.log('login status: ' + response.status);
     if (response.status === 'connected') {
         gujaSignin(response.authResponse);
         displayUser();

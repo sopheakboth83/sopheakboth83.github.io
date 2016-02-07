@@ -2,23 +2,27 @@
 
             <div class="panel panel-default">
 
-                <div class="panel-heading">Competition Details</div>
+                <div class="panel-heading">Event Details</div>
                 <table class="table">
                     <tbody id="comp">
                     <tr>
-                        <td>id</td>
+                        <td>competitionId</td>
                         <td id="comp_id"></td>
                     </tr>
                     <tr>
+                        <td>id</td>
+                        <td id="event_id"></td>
+                    </tr>
+                    <tr>
                         <td>title</td>
-                        <td><input id="comp_title" type="text"/></td>
+                        <td><input id="event_title" type="text"/></td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td></td>
                         <td>
-                            <button id="saveCompetitionButton" type="button" class="btn btn-sm btn-info" onclick="saveCompetition($('#comp_id').html())">Save Competition
+                            <button id="saveButton" type="button" class="btn btn-sm btn-info" onclick="saveEvent($('#comp_id').html(),$('#event_id').html())">Save Event
                             </button>
                         </td>
                     </tr>
@@ -29,14 +33,16 @@
 
         <div class="col-sm-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Events</div>
+                <div class="panel-heading">Heats</div>
                 <table class="table">
                     <tbody id="events">
                     </tbody>
                     <tfoot>
                     <tr>
                         <td>
-                            <button onclick="loadEvent($('#comp_id').html(), '')" id="createEventButton" type="button" class="btn btn-sm btn-info">Add Event...</button>
+                            <a href="#">
+                            <button onclick="saveHeat($('#event_id').html())" id="createHeatButton" type="button" class="btn btn-sm btn-info">Add Heat...</button>
+                            </a>
                         </td>
                     </tr>
                     </tfoot>
